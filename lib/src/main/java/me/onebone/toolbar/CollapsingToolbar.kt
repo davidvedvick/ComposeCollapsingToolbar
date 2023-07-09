@@ -73,7 +73,7 @@ class CollapsingToolbarState(
 		internal set(value) {
 			minHeightState = value
 
-			if(height < value) {
+			if (height < value) {
 				height = value
 			}
 		}
@@ -88,7 +88,7 @@ class CollapsingToolbarState(
 		internal set(value) {
 			maxHeightState = value
 
-			if(value < height) {
+			if (value < height) {
 				height = value
 			}
 		}
@@ -99,9 +99,9 @@ class CollapsingToolbarState(
 	val progress: Float
 		@FloatRange(from = 0.0, to = 1.0)
 		get() =
-			if(minHeight == maxHeight) {
+			if (minHeight == maxHeight) {
 				0f
-			}else{
+			} else {
 				((height - minHeight).toFloat() / (maxHeight - minHeight)).coerceIn(0f, 1f)
 			}
 
@@ -115,7 +115,7 @@ class CollapsingToolbarState(
 		val current = consume + deferredConsumption
 		val currentInt = current.toInt()
 
-		if(current.absoluteValue > 0) {
+		if (current.absoluteValue > 0) {
 			height += currentInt
 			deferredConsumption = current - currentInt
 		}
@@ -263,7 +263,7 @@ private class CollapsingToolbarMeasurePolicy(
 					strategy.progressListener?.onProgressUpdate(progress)
 				}
 
-				when(strategy) {
+				when (strategy) {
 					is CollapsingToolbarRoadData -> {
 						val collapsed = strategy.whenCollapsed
 						val expanded = strategy.whenExpanded
